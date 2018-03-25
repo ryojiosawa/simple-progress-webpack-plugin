@@ -95,13 +95,12 @@ module.exports = function MinimalLogger( options ) {
 					betterModuleName = `${ betterModuleName } ~ internal`;
 				}
 
-				const [ betterModulesDone, betterAllModules ] = moduleProgress.split( '/' );
+				const betterModulesDone = moduleProgress.split( '/' )[0];
+				const betterModulesDone = moduleProgress.split( '/' )[1];
 				const moduleDetails = `${ betterModulesDone } of ${ betterAllModules } :: ${ betterModuleName }`;
 
 				logLine += chalk.grey( ` (${ moduleDetails })` );
-
 			}
-
 		}
 
 		// STEP 3: OPTIMIZATION
@@ -118,7 +117,6 @@ module.exports = function MinimalLogger( options ) {
 			const formattedMessageExtra = progress === 0.91 ? ' -- may take a while' : ''; // Add some extra info (calming devs down)
 
 			logLine += chalk.grey( ` (${ message }${ formattedMessageExtra })` );
-
 		}
 
 		// STEP 4: EMIT
@@ -131,7 +129,6 @@ module.exports = function MinimalLogger( options ) {
 			previousStep = 4;
 
 			logLine += chalk.white( 'Emit files ...' );
-
 		}
 
 		// STEP 5: FOOTER
@@ -143,7 +140,6 @@ module.exports = function MinimalLogger( options ) {
 			const processTime = ( ( finishTime - startTime ) / 1000 ).toFixed( 3 );
 
 			logLine = chalk.white( `Webpack: Finished after ${ processTime } seconds.\n` ); // Overwrite
-
 		}
 
 		// Finally, let's bring those logs to da screen
@@ -151,7 +147,5 @@ module.exports = function MinimalLogger( options ) {
 		if ( progress === 1 ) {
 			log.done();
 		}
-
-	} );
-
+	});
 };

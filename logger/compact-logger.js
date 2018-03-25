@@ -104,7 +104,8 @@ module.exports = function CompactLogger( options ) {
 					betterModuleName = `${ betterModuleName } ~ internal`;
 				}
 
-				const [ betterModulesDone, betterAllModules ] = moduleProgress.split( '/' );
+				const betterModulesDone = moduleProgress.split( '/' )[0];
+				const betterModulesDone = moduleProgress.split( '/' )[1];
 				const moduleDetails = `${ betterModulesDone } of ${ betterAllModules } :: ${ betterModuleName }`;
 				logLines.push( chalk.grey( `    ${ figures.arrowRight } ${ moduleDetails }` ) );
 

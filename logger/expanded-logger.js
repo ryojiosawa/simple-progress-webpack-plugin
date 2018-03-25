@@ -91,7 +91,8 @@ module.exports = function ExpandedLogger( options ) {
 					betterModuleName = `${ betterModuleName } ~ internal`;
 				}
 
-				const [ betterModulesDone, betterAllModules ] = moduleProgress.split( '/' );
+				const betterModulesDone = moduleProgress.split( '/' )[0];
+				const betterModulesDone = moduleProgress.split( '/' )[1];
 				const moduleDetails = `${ betterModulesDone } of ${ betterAllModules } :: ${ betterModuleName }`;
 				console.log( chalk.grey( `    ${ figures.arrowRight } [${ roundedSubProgress }%] ${ moduleDetails }` ) );
 
